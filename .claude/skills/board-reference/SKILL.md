@@ -7,23 +7,23 @@ description: "Use when: answering questions about the Arches board design — sc
 
 This repo is the design source of truth for the Arches board: an NVIDIA Jetson
 (Tegra, L4T/JetPack) application processor paired with an STM32 real-time
-co-processor. It is **read-only for every agent** — owned by a human hardware
-engineer, `status: readonly` in the fleet graph, and a scope violation in any
+co-processor. It is read-only for every agent — owned by a human hardware
+engineer, status: readonly in the fleet graph, and a scope violation in any
 loop. You consult it; you never modify it.
 
 ## What you can legitimately do here
 
-- **Answer hardware questions for other repos.** The common consumers:
-  - `Arches-HAL` — a module author needs to know what a hardware block actually
+- Answer hardware questions for other repos. The common consumers:
+  - Arches-HAL — a module author needs to know what a hardware block actually
     is (which CAN transceiver, which NVMe slot wiring, which GPIO bank).
-  - `Arches-Configuration` — `board-manifests/arches.json` encodes hardware
+  - Arches-Configuration — board-manifests/arches.json encodes hardware
     knowledge (STM32 MCU panel, CAN, cameras, GPU tiles) redundantly with the
     design; when manifest and design disagree, the design wins and the manifest
     is the bug.
-  - `Arches-OS` — device tree / carrier-board questions.
-- **Cross-check a BOM or connector fact** before someone writes software
+  - Arches-OS — device tree / carrier-board questions.
+- Cross-check a BOM or connector fact before someone writes software
   against a wrong assumption.
-- **Flag inconsistencies to the human** — as findings, never as edits.
+- Flag inconsistencies to the human — as findings, never as edits.
 
 ## Current state — don't over-promise
 
@@ -34,11 +34,11 @@ carrier-board wiring is exactly where generic Jetson knowledge goes wrong.
 
 ## Rules
 
-- No file writes outside `.claude/`, and those only for documentation. The
+- No file writes outside .claude/, and those only for documentation. The
   PreToolUse hook denies everything else; do not route around it with Bash.
 - No commits, no pushes (denied in settings). The hardware engineer owns
   history here.
-- The repo still receives the fleet-wide `feature/<slug>` branch during loops —
-  read-only governs file *content*, not refs. Don't be surprised by branches.
-- Never list this repo in a loop's `repos:` — `make loop-lint` in the master
+- The repo still receives the fleet-wide feature/<slug> branch during loops —
+  read-only governs file content, not refs. Don't be surprised by branches.
+- Never list this repo in a loop's repos: — make loop-lint in the master
   repo flags it and the scope-check rejects it.
