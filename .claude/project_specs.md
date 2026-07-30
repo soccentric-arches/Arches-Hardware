@@ -1,12 +1,13 @@
 # Arches-Hardware — specs
 
 Remote: `git@github.com:SiliconCentric/Arches-Hardware.git`
-Parent project: Arches (target hardware: NVIDIA Jetson, Tegra family, L4T/JetPack OS, with an STM32 real-time co-processor)
-Leaf type: `<Project>-Hardware`
-Status: READ-ONLY — human-owned (`status: readonly` in `loop/fleet-deps.yaml`)
+Status: READ-ONLY, human-owned (`status: readonly` in the fleet dependency graph).
 
-## What this is
+Board design source of truth for the Jetson + STM32 carrier: schematics, PCB layout, BOM,
+manufacturing artifacts.
 
-A board design source of truth leaf (schematics, PCB layout, BOM, manufacturing artifacts), owned by a human hardware engineer. Content is sparse today — a README template and no design files yet — but this is not a stub awaiting automation: it is deliberately outside the engine's write path.
+## What to expect
 
-Part of the Arches project in the project-managers fleet. See `docs/project-managers.md` for the full 9-project / 8-leaf hierarchy and shared conventions.
+* Content is sparse today — a README template, no design files yet.
+* That is not a stub awaiting automation. This repo is deliberately outside the engine's write path and stays that way.
+* No build, no test, no validation gate. Nothing to run here.
