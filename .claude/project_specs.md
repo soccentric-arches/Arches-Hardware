@@ -1,6 +1,6 @@
 # Arches-Hardware — specs
 
-Remote: `git@github.com:SiliconCentric/Arches-Hardware.git`
+Remote: `git@github.com:soccentric-arches/Arches-Hardware.git`
 Status: READ-ONLY, human-owned (`status: readonly` in the fleet dependency graph).
 
 Board design source of truth for the Jetson + STM32 carrier: schematics, PCB layout, BOM,
