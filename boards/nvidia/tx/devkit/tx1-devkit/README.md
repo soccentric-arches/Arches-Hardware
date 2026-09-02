@@ -61,6 +61,35 @@ Notes:
 
 ## GPIO expansion header (J26, 30-pin)
 
+Verified pinout (TX1/TX2 Developer Kit Carrier Board Specification, Table 22):
+
+| Pin | Signal | Pin | Signal |
+|---|---|---|---|
+| 1 | CAN_WAKE (TX2, 3.3 V) | 2 | +3.3 V (1 A) |
+| 3 | CAN0_STBY (TX2) | 4 | +1.8 V (1 A) |
+| 5 | CAN0_RX (TX2, 3.3 V, 1 mA) | 6 | AP2MDM_READY (GPIO) |
+| 7 | CAN0_TX (TX2, 3.3 V) | 8 | +5.0 V (1 A) |
+| 9 | CAN0_ERR (TX2, 3.3 V) | 10 | GND |
+| 11 | GND | 12 | I2C_GP2_CLK (1.8 V, open-drain) |
+| 13 | CAN1_STBY (TX2) | 14 | I2C_GP2_DAT (1.8 V, open-drain) |
+| 15 | CAN1_RX (TX2, 3.3 V) | 16 | WDT_TIME_OUT# (TX2) |
+| 17 | CAN1_TX (TX2, 3.3 V) | 18 | I2C_GP3_CLK (1.8 V, open-drain) |
+| 19 | CAN1_ERR (TX2, 3.3 V) | 20 | I2C_GP3_DAT (1.8 V, open-drain) |
+| 21 | GND | 22 | SLEEP# (1.8 V; TX2 = GPIO_FF.02 strap — care at power-on) |
+| 23 | I2S1_CLK (1.8 V) | 24 | I2S1_SDOUT (1.8 V) |
+| 25 | I2S1_SDIN (1.8 V) | 26 | I2S1_LRCLK (1.8 V) |
+| 27 | DSPK_OUT_CLK (TX2, 1.8 V) | 28 | GND |
+| 29 | DSPK_OUT_DAT (TX2, 1.8 V) | 30 | RSVD (GNSS_PSS) |
+
+Notes:
+- **CAN0/CAN1, CAN_STBY, CAN_WAKE, WDT and DSPK signals exist on TX2 only** —
+  absent on TX1 (carrier spec Tables 23/24). CAN RX/TX run at 3.3 V through
+  level shifters; max trace budget 1360 ps.
+- I2S1 @ 1.8 V (3600 ps budget); I2C_GP2/GP3 @ 1.8 V open-drain (1 kΩ PU).
+- Direct-SoC pins drive 1 mA (2 mA at restricted VOL/VOH); header is 2×15,
+  2.54 mm pitch (J26).
+
+
 I2S1 (23/24/25/26), CAN0 RX/TX/ERR (5/7/9) and CAN1 RX/TX/ERR (15/17/19)
 (**CAN is TX2-only** — pins inert with TX1), I2C_GP2/GP3 @ 1.8 V (12/14/18/20),
 DSPK out (27/29, TX2-only), WDT output, AP2MDM_READY, sleep indicator.

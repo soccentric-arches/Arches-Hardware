@@ -66,6 +66,30 @@ CAN0 RX/TX/ERR (5/7/9), CAN1 RX/TX/ERR (15/17/19) + CAN1_STBY (13), CAN_WAKE (1)
 I2S1 (23–26), I2C_GP2/GP3 @ 1.8 V (12/14/18/20), DSPK out (27/29), WDT output (16),
 SLEEP indicator (22). **This is where the 2x CAN bus is exposed on TX2.**
 
+Verified pinout (TX1/TX2 Developer Kit Carrier Board Specification, Table 22):
+
+| Pin | Signal | Pin | Signal |
+|---|---|---|---|
+| 1 | CAN_WAKE (3.3 V) | 2 | +3.3 V (1 A) |
+| 3 | CAN0_STBY | 4 | +1.8 V (1 A) |
+| 5 | CAN0_RX (3.3 V, 1 mA) | 6 | AP2MDM_READY (GPIO) |
+| 7 | CAN0_TX (3.3 V) | 8 | +5.0 V (1 A) |
+| 9 | CAN0_ERR (3.3 V) | 10 | GND |
+| 11 | GND | 12 | I2C_GP2_CLK (1.8 V, open-drain) |
+| 13 | CAN1_STBY | 14 | I2C_GP2_DAT (1.8 V, open-drain) |
+| 15 | CAN1_RX (3.3 V) | 16 | WDT_TIME_OUT# |
+| 17 | CAN1_TX (3.3 V) | 18 | I2C_GP3_CLK (1.8 V, open-drain) |
+| 19 | CAN1_ERR (3.3 V) | 20 | I2C_GP3_DAT (1.8 V, open-drain) |
+| 21 | GND | 22 | SLEEP# (1.8 V; RAM-code strap — care at power-on) |
+| 23 | I2S1_CLK (1.8 V) | 24 | I2S1_SDOUT (1.8 V) |
+| 25 | I2S1_SDIN (1.8 V) | 26 | I2S1_LRCLK (1.8 V) |
+| 27 | DSPK_OUT_CLK (1.8 V) | 28 | GND |
+| 29 | DSPK_OUT_DAT (1.8 V) | 30 | RSVD (GNSS_PSS) |
+
+Notes: CAN RX/TX run at 3.3 V via level shifters (trace budget 1360 ps);
+I2S1 @ 1.8 V; I2C_GP2/GP3 @ 1.8 V open-drain; direct-SoC pins drive 1 mA
+(2 mA restricted). Header is 2×15, 2.54 mm pitch (J26).
+
 ## How to load the OS
 
 1. Force Recovery: power on → hold RECOVERY FORCE → press+release RESET →
