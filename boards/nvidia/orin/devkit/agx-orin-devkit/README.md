@@ -49,7 +49,9 @@
 | 37 | CAN1_DIN | 38 | I2S2_DIN |
 | 39 | GND | 40 | I2S2_DOUT |
 
-Notes: I2C pins are open-drain (1 mA drive through level shifter); many pins route
+Notes: SFIOs (I2S, SPI, PWM, CAN, I2C) are configured with Jetson-IO
+(`sudo /opt/nvidia/jetson-io/jetson-io.py`); compatible strings
+`nvidia,p3737-0000+p3701-000x`. I2C pins are open-drain (1 mA drive through level shifter); many pins route
 via TI TXB0108 translators (weak drivers, overdriveable for bidirectional use);
 some pins are direct 1 mA SoC I/O. Full electrical detail: SP-10900-001 Table 3-4
 (`datasheets/`). Pin 1 = white triangle on PCB.

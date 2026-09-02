@@ -22,6 +22,27 @@
 | Recovery | Force Recovery button + **J81 USB recovery port** |
 | Mechanical | 243.19 × 112.40 × 56.88 mm (TTP + optional fan/heat sink) |
 
+## Expansion headers (complete list) — **no 40-pin header on this dev kit**
+
+The AGX Thor dev kit does **not** provide a Raspberry-Pi-style 40-pin header
+(verified against the dev-kit I/O list). Low-speed expansion is via these
+headers instead:
+
+| Header / connector | Size | Signals |
+|---|---|---|
+| CAN headers (x2) | 13-pin | 4x CAN (T5000; **inert on T4000** — no CAN controllers) — `VERIFY` pinout in user guide |
+| Automation headers (x2) | 6-pin | power / reset / force-recovery / auto-power-on control — `VERIFY` pinout |
+| Audio panel header | 2x5 | HD-audio front-panel signals |
+| JTAG connector | 2x5 | TCK/TMS/TDI/TDO/TRST (module JTAG, ≤15 MHz) |
+| M.2 Key E | 75-pin | WLAN/BT: x1 PCIe **Gen5**, USB 2.0, UART, I2C, I2S |
+| M.2 Key M | 75-pin | NVMe x4 PCIe **Gen5** (+ I2C, x2 PCIe lane) |
+| QSFP28 | — | 4x 25GbE (Holoscan Sensor Bridge capable) |
+| Fan connector | — | 12 V, PWM, tach |
+| RTC backup battery | 2-pin | RTC backup |
+
+`VERIFY` exact header pinouts against the Jetson AGX Thor Developer Kit User
+Guide and carrier design files — add to `datasheets/`.
+
 ## Notes
 
 - M.2 Key M: x4 PCIe **Gen5**; M.2 Key E: x1 PCIe Gen5.

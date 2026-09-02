@@ -23,21 +23,41 @@
 | UI | Power (S4), Reset (S1), Force Recovery (S3), Volume-down/Sleep (S2) buttons; LEDs: VDD_IN (red), Power, SOC-enable, M.2 ×2, PCIe/SATA 12 V |
 | Fan | 4-pin header (5 V, PWM, tach) |
 
-## 40-pin expansion header (J21, verified pin functions)
+## 40-pin expansion header (J21) — verified pinout (TX1/TX2 Developer Kit Carrier Board Specification)
 
-| Pins | Function |
-|---|---|
-| 1, 17 | +3.3 V (1 A/pin) |
-| 2, 4 | +5 V (1 A/pin) |
-| 3, 5 | I2C #0 (SDA/SCL, open-drain, 3.3 V default; level via J24) |
-| 8, 10, 11, 36 | UART1 TX/RX/RTS/CTS (3.3 V, 24 mA buffers) |
-| 7 | AUDIO_MCLK; 12 I2S0 SCLK; 35 I2S0 LRCLK; 38/40 I2S0 DIN/DOUT |
-| 19/21/23/24/26 | SPI1 MOSI/MISO/SCK/CS0/CS1 (1.8/3.3 V via J24) |
-| 13, 15, 18, 22, 29, 31, 32, 33, 37, 38, 40 | GPIO / DMIC / codec-int / AP_WAKE_BT / SAR per pinmux |
-| 6, 9, 14, 20, 25, 30, 34, 39 | GND |
+All signal pins are level-selected 1.8/3.3 V via the J24 jumper (except UART +
+I2C + expander pins, fixed 3.3 V); power pins 1 A each.
 
-Note: J24 (3-pin) selects 1.8 V vs 3.3 V for the TXB0108 level-shifted pins.
-Full per-pin Tegra ball/GPIO tables in the carrier spec (`datasheets/`).
+| Pin | Signal | Pin | Signal |
+|---|---|---|---|
+| 1 | +3.3 V (1 A) | 2 | +5.0 V (1 A) |
+| 3 | I2C0_SDA (open-drain, 3.3 V) | 4 | +5.0 V (1 A) |
+| 5 | I2C0_SCL | 6 | GND |
+| 7 | AUD_MCLK (audio master clock) | 8 | UART1_TX (3.3 V) |
+| 9 | GND | 10 | UART1_RX (3.3 V) |
+| 11 | UART1_RTS (3.3 V) | 12 | I2S0_SCLK |
+| 13 | GPIO20 / audio-codec IRQ | 14 | GND |
+| 15 | GPIO_EXP_P17 (GPIO expander) | 16 | DMIC3_DAT (digital mic data) |
+| 17 | +3.3 V (1 A) | 18 | GPIO16 / MDM_WAKE_AP |
+| 19 | SPI1_MOSI | 20 | GND |
+| 21 | SPI1_MISO | 22 | GPIO_EXP_P16 (GPIO expander) |
+| 23 | SPI1_SCLK | 24 | SPI1_CS0# |
+| 25 | GND | 26 | SPI1_CS1# |
+| 27 | I2C1_SDA (open-drain, 3.3 V) | 28 | I2C1_SCL |
+| 29 | GPIO19 / AUD_RST | 30 | GND |
+| 31 | GPIO9 / MOTION_INT (OD) | 32 | DMIC3_CLK (digital mic clock) |
+| 33 | GPIO11 / AP_WAKE_BT | 34 | GND |
+| 35 | I2S0_LRCLK | 36 | UART1_CTS (3.3 V) |
+| 37 | GPIO8 / ALS_PROX_INT (OD) | 38 | I2S0_SDIN |
+| 39 | GND | 40 | I2S0_SDOUT |
+
+Notes:
+- J24 (3-pin) selects 1.8/3.3 V for TXB0108-translated signals (I2S/MCLK,
+  SPI1, DMIC, MDM_WAKE, AP_WAKE_BT); UART and I2C pins are fixed 3.3 V.
+- TX1 I2C mapping: pins 3/5 = I2C1, 27/28 = I2C2 (TX2 swaps them).
+- Per-pin Tegra ball + GPIO-port tables (power-on states, pulls) in the
+  carrier spec — add to `datasheets/`. Reconfigure SFIOs on-board with
+  Jetson-IO: `sudo /opt/nvidia/jetson-io/jetson-io.py`.
 
 ## GPIO expansion header (J26, 30-pin)
 

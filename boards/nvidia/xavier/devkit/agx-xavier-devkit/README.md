@@ -40,6 +40,42 @@
 | HDMI | HDMI 2.0 / eDP 1.2a / DP 1.4 |
 | microSD/UFS | SD/UFS |
 
+## 40-pin expansion header (J30) — verified pinout (carrier spec Table 18)
+
+Levels 1.8/3.3 V selectable via **J514** (except UART pins and power = 3.3 V);
+power pins 1 A max each. Sysfs GPIO numbers shown for GPIO-mode use.
+
+| Pin | Signal (sysfs) | Pin | Signal (sysfs) |
+|---|---|---|---|
+| 1 | +3.3 V (1 A) | 2 | +5.0 V (1 A) |
+| 3 | I2C_GP5_DAT — I2C bus 8 | 4 | +5.0 V (1 A) |
+| 5 | I2C_GP5_CLK — bus 8 | 6 | GND |
+| 7 | MCLK05 audio master clock (gpio422) | 8 | UART1_TX (3.3 V) |
+| 9 | GND | 10 | UART1_RX (3.3 V) |
+| 11 | UART1_RTS (gpio428) | 12 | I2S2_CLK (gpio351) |
+| 13 | PWM01 (gpio424) | 14 | GND |
+| 15 | GPIO27 / PWM2 (gpio393) | 16 | GPIO8 / DMIC data (gpio256, 3.3 V) |
+| 17 | +3.3 V (1 A) | 18 | GPIO35 / PWM3 (gpio344) |
+| 19 | SPI1_MOSI (gpio493) | 20 | GND |
+| 21 | SPI1_MISO (gpio492) | 22 | GPIO17 (gpio417) |
+| 23 | SPI1_SCLK (gpio491) | 24 | SPI1_CS0 (gpio494) |
+| 25 | GND | 26 | SPI1_CS1 (gpio495) |
+| 27 | I2C_GP2_DAT — I2C bus 1 | 28 | I2C_GP2_CLK — bus 1 |
+| 29 | CAN0_DIN (gpio251, 3.3 V) | 30 | GND |
+| 31 | CAN0_DOUT (gpio250, 3.3 V) | 32 | GPIO9 / DMIC clock (gpio257, 3.3 V) |
+| 33 | CAN1_DOUT (gpio248, 3.3 V) | 34 | GND |
+| 35 | I2S2_FS (gpio354) | 36 | UART1_CTS (gpio429) |
+| 37 | CAN1_DIN (gpio249, 3.3 V) | 38 | I2S2_SDIN (gpio353) |
+| 39 | GND | 40 | I2S2_SDOUT (gpio352) |
+
+Notes:
+- Default pinmux sets all non-power/UART/I2C pins to **GPIO**; enabling SFIOs
+  (CAN, I2S, PWM, SPI) via Jetson-IO (`sudo /opt/nvidia/jetson-io/jetson-io.py`)
+  or the alternate pinmux config (`tegra19x-mb1-pinmux-p2888-slvs-...-p2822-...`).
+- **CAN caution:** CAN[1:0]_DIN/DOUT pins (29/31/33/37) carry internal 3.3 V
+  pull-ups at power-on — connect only 3.3 V-tolerant devices.
+- I2C bus check: `i2cdetect -y -r 8` (pins 3/5) and `-r 1` (pins 27/28).
+
 ## How to load the OS
 
 1. **Arches build:** `xavier` Yocto branch; flash per branch README (legacy
