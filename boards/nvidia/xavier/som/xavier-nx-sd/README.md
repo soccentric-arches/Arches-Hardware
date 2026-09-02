@@ -18,7 +18,7 @@
 | DLA / PVA | 2x NVDLA v1 / 1x PVA v1 (`VERIFY` count for NX) |
 | AI perf | up to 21 TOPS (INT8, sparse, 20 W mode) |
 | Memory | 8 GB 128-bit LPDDR4x, 51.2 GB/s |
-| Storage | none on module — microSD (16 GB+) |
+| | Storage | none on module — microSD (≥32 GB UHS-1 recommended) |
 | Power modes | 10 W / 15 W / 20 W (MAXN `VERIFY`) |
 | Form factor | 260-pin SODIMM, 69.6 × 45 mm (Orin NX/Nano footprint) |
 
@@ -27,10 +27,10 @@
 | Interface | Value |
 |---|---|
 | Camera | up to 6x MIPI CSI-2 lanes (`VERIFY`) |
-| USB | 3x USB 3.1 + 3x USB 2.0 (`VERIFY`) |
-| PCIe | 1x4 + 1x1 (Gen3/Gen4 `VERIFY`) |
+| | USB | 3x USB 3.1 Gen2 + 3x USB 2.0 (module; dev-kit carrier: 4x Type-A via Gen2 hub + Micro-B device-only) |
+| | PCIe | C0 x4 Gen4, C1 x1, C3 x1, C5 dual-mode x8 (dev-kit default: C4 x1 Gen3 → M.2 Key E, C5 x4 Gen4 → M.2 Key M) |
 | Networking | GbE MAC |
-| Display | 1x shared HDMI 2.0 / DP 1.4 |
+| | Display | stacked HDMI 2.0a/b + DP 1.4 on carrier |
 | Low-speed | UART, I2C, I2S, SPI, PWM, GPIO (260-pin SODIMM — design guide in `datasheets/`) |
 
 ## Internal hardware

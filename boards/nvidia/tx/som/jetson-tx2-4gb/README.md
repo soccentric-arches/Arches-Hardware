@@ -4,7 +4,7 @@
 |---|---|
 | Family / branch | `tx` · L4T R32.7.x · JetPack 4.6.x |
 | Module P/N | P3489-0888 |
-| Dev kit / carrier | P2771 carrier (no dedicated dev kit) |
+| Dev kit / carrier | P2771 carrier (P2597 carrier board; no dedicated dev kit) |
 | Flash config (L4T) | `jetson-tx2-4gb` |
 | Yocto MACHINE | `jetson-tx2-4gb` — `VERIFY` |
 
@@ -21,9 +21,9 @@
 
 ## Interfaces / I/O
 
-Same module interface set as Jetson TX2 (12x CSI-2 lanes, USB 3.1 + USB 2.0, GbE MAC,
-HDMI 2.0 + DP 1.2, SDMMC, UART/I2C/I2S/SPI) — reduced memory/storage. See
-`../jetson-tx2/README.md` and `datasheets/`.
+Same module interface set as Jetson TX2 (12 CSI-2 lanes, USB 3.0 + USB 2.0, GbE,
+HDMI 2.0 + DP 1.2, SATA, CAN, UART/I2C/I2S/SPI) with reduced memory/storage.
+See `../jetson-tx2/README.md` and `datasheets/`.
 
 ## Internal hardware
 
@@ -37,8 +37,8 @@ Boot from eMMC via BCT → CBoot.
 
 ## How to log in
 
-Same as TX2 — default `nvidia`/`nvidia` (change it), serial console 115200 8N1 on the
-carrier debug UART, SSH at `192.168.55.1` via USB device mode.
+Same as TX2 — stock default `ubuntu`/`ubuntu` (change it), serial console 115200 8N1
+on the carrier serial header (3.3 V), SSH at `192.168.55.1` via USB device mode.
 
 ## Artifacts
 

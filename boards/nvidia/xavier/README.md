@@ -11,7 +11,7 @@ Flash path: legacy `flash.sh` (eMMC) — see per-board READMEs.
 | AGX Xavier 8/16/32/64 GB | P2888 variants (`VERIFY` exact P/N per SKU, e.g. P2888-0004 16 GB / -0006 32 GB) | P2972-0000 dev kit (carrier P2822) | `som/agx-xavier` |
 | AGX Xavier Industrial | P2888-0008 | P2972 carrier | `som/agx-xavier` (industrial row) |
 | Xavier NX (SD) | P3668-0000 | P3509 dev kit | `som/xavier-nx-sd` |
-| Xavier NX (eMMC) | P3668-0001 | P3509 / P3449 carrier | `som/xavier-nx-emmc` |
+| Xavier NX (eMMC) | P3668-0001 (production; **P3668-0003 = 16 GB RAM variant**, verified) | P3509 / P3449 carrier | `som/xavier-nx-emmc` |
 
 Part numbers mirrored from the branching doc §5.2; `VERIFY` flags mark values to
 reconcile against NVIDIA datasheets and the pinned `meta-tegra` branch.

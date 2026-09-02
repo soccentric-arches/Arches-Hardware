@@ -1,4 +1,4 @@
-# Xavier NX (eMMC variant, module P3668-0001)
+# Xavier NX (eMMC variant, module P3668-0001; 16GB variant P3668-0003)
 
 | Item | Value |
 |---|---|
@@ -25,8 +25,9 @@ On-module PMIC + 16 GB eMMC; boot BCT → UEFI/CBoot from eMMC; recovery via USB
 
 ## How to log in
 
-Same as Xavier NX SD — first-boot wizard (stock) or Arches rootfs user; serial
-console 115200 8N1; SSH at `192.168.55.1` in USB device mode.
+Same as Xavier NX SD — first-boot OEM wizard (stock) or Arches rootfs user;
+serial console 115200 8N1; SSH at `192.168.55.1` (Micro-B is device-only on
+the P3509 carrier).
 
 ## Artifacts
 

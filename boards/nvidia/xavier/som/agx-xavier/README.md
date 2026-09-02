@@ -13,14 +13,14 @@
 | Spec | Value |
 |---|---|
 | SoC | NVIDIA Xavier (T194) |
-| CPU | 8x NVIDIA Carmel (ARMv8.2) @ 2.26 GHz (8 GB SKU: `VERIFY` core count) |
+| CPU | 8x NVIDIA Carmel ARMv8.2 64-bit, 8 MB L2 + 4 MB L3 (dev-kit datasheet) |
 | GPU | Volta, 512 CUDA cores + 64 Tensor Cores |
 | DLA | 2x NVDLA v1 |
 | PVA | 1x PVA v1 |
 | AI perf | up to 32 TOPS (INT8, sparse) |
-| Memory | 8/16/32/64 GB 256-bit LPDDR4x, 136.5 GB/s |
+| Memory | 8/16/32/64 GB 256-bit LPDDR4x, 137 GB/s (dev-kit SKU: 16 GB) |
 | Storage | eMMC 5.1 up to 64 GB (`VERIFY` per SKU) |
-| Power modes | 10 W / 15 W / 30 W (MAXN) |
+| | Power modes | 10 W / 15 W / 30 W (MAXN) — verified |
 | Industrial SKU | extended temp (-25 °C class) + industrial qualification (`VERIFY` range) |
 | Form factor | 699-pin B2B connector, 100 × 87 mm class w/ thermal transfer plate |
 
@@ -28,10 +28,10 @@
 
 | Interface | Value |
 |---|---|
-| Camera | up to 16x MIPI CSI-2 lanes (DPHY 1.2) |
-| USB | up to 3x USB 3.1 Gen2 + 4x USB 2.0 (`VERIFY` per design guide) |
+| Camera | 16x MIPI CSI-2 lanes (up to 6 direct cameras / 16 virtual channels); 8x SLVS-EC |
+| USB | 3x USB 3.1 Gen2 + 4x USB 2.0 (design guide; USB-C ports on dev kit are USB 3.1 Gen2) |
 | PCIe | up to Gen4, x1/x2/x4/x8 + x16 root/endpoint capable (`VERIFY` controller map) |
-| Networking | 1x GbE MAC + 1x MGBE-capable (dev kit exposes up to 10GbE-class RJ45 `VERIFY`) |
+| Networking | 1x GbE MAC (RJ45 on dev kit) |
 | Display | 1x shared HDMI 2.0 / DP 1.4 (+MST) + eDP |
 | Low-speed | up to 9x UART, 9x I2C, 6x SPI, I2S/AHUB, CAN `VERIFY`, PWM, GPIOs — full map in the Xavier Product Design Guide (`datasheets/`) |
 

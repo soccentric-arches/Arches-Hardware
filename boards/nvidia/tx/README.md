@@ -9,10 +9,10 @@ Flash path: legacy tegraflash via `flash.sh`.
 | SOM | Module P/N | Dev kit / carrier | Folder |
 |---|---|---|---|
 | Jetson TX1 | P2180 | P2371-2180 dev kit | `som/jetson-tx1` |
-| Jetson TX2 | P3310 (`VERIFY` — NVIDIA lists TX2 module as P3489-0000; P3310 is the dev-kit carrier) | P2771-0000 dev kit | `som/jetson-tx2` |
-| Jetson TX2i | P3489-0000 (`VERIFY` — NVIDIA lists P3489-0008 for TX2i) | P2771 carrier | `som/jetson-tx2i` |
+| Jetson TX2 | **P3310** (confirmed — L4T adaptation guide: P3310 SOM + P2597 carrier = P2771 kit) | P2771-0000 dev kit | `som/jetson-tx2` |
+| Jetson TX2i | P3489-0000 (`VERIFY` SKU suffix — NVIDIA marketing lists P3489-0008; ECC DRAM is TX2i-only) | P2771 carrier (P2597 board) | `som/jetson-tx2i` |
 | Jetson TX2 4GB | P3489-0888 | P2771 carrier | `som/jetson-tx2-4gb` |
-| Jetson TX2 NX | P3636 (`VERIFY` — NVIDIA lists P3449-0000 for TX2 NX) | P3509 / Nano dev kit carrier | `som/jetson-tx2-nx` |
+| Jetson TX2 NX | P3636 (`VERIFY` — resolve against TX2 NX adaptation guide; not compatible with the P2597 TX2 carrier) | P3509 / Nano dev kit carrier | `som/jetson-tx2-nx` |
 | Jetson Nano (SD) | P3448-0000 | P3450 dev kit | `som/jetson-nano-sd` |
 | Jetson Nano (eMMC) | P3448-0002 | P3449 carrier | `som/jetson-nano-emmc` |
 | Jetson Nano 2GB | P3448-0003 | P3541 dev kit | `som/jetson-nano-2gb` |
@@ -26,10 +26,12 @@ names downstream.
 
 - No module in this generation has LPDDR5, NVMe-only boot, or UEFI boot — all use
   legacy CBoot/BCT flow flashed with `flash.sh`.
-- Dev-kit first boot: JetPack 4.x images ship default user `nvidia` / password
-  `nvidia` with auto-login on dev kits; change it on first network exposure.
-- Serial console on dev kits: USB micro-B OTG port exposes the debug UART,
-  115200 8N1.
+- Dev-kit first boot: stock TX1/TX2 dev-kit images default user `ubuntu` /
+  password `ubuntu` (user guides); JetPack 4.6.x images run an OEM setup
+  wizard. Change credentials before network exposure.
+- Serial console on dev kits: the shared P2597 carrier exposes UART1 on the
+  1×6 serial header (3.3 V, flow control) and UART0 @ 1.8 V on the 2×30 debug
+  connector — 115200 8N1.
 - SSH over USB device mode: host enumerates RNDIS/NCM; board answers on
   `192.168.55.1`.
 
