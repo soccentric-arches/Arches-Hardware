@@ -51,6 +51,15 @@
 - **Serial console:** micro-USB debug port on the dev kit, 115200 8N1.
 - **SSH:** USB device mode → `192.168.55.1`, or over Ethernet/WiFi once configured.
 
+## Module connector — 260-pin SODIMM
+
+260-pin SO-DIMM, 69.6 × 45 mm (footprint family shared with TX2 NX, Xavier
+NX, Orin NX/Nano). Full pin list: Jetson Nano module datasheet (DS-09366)
+pin list + Nano Product Design Guide — add to `datasheets/`. Verified
+interface groups: 1x 4-lane MIPI CSI-2, 1x USB 3.0 + 3x USB 2.0, GbE MDI,
+HDMI 2.0 + DP 1.2 display lanes, SDMMC (SD/eSD), UART/I2C (x2)/I2S/SPI/PWM/
+GPIO banks, 5 V VDD_IN, PMIC_BBAT, FORCE_RECOVERY, JTAG.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P3448 datasheet, Nano dev kit user guide)

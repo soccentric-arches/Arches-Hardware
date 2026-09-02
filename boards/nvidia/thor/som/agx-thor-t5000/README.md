@@ -58,6 +58,17 @@
   the AGX Thor dev kit user guide).
 - **SSH:** over the 5 GbE RJ45 once networked; USB gadget address `VERIFY` on Thor.
 
+## Module connector — 699-pin board-to-board
+
+699-pin B2B connector; module 100 × 87 × 15.29 mm, integrated TTP with
+heatpipe (~350 g). Full pinout: Jetson Thor Series Modules Design Guide
+(DG-12084-001) pin-description spreadsheet (add to `datasheets/`). Verified
+interface groups (DS-11945-001): 16x MIPI CSI-2 lanes (C-PHY 2.1 / D-PHY 2.1)
++ CoE via MGBE, 4x MGBE 25GbE, 3x USB 3.2 + 4x USB 2.0, PCIe Gen5 up to x8
+(C1 x1, C3 x2 root-only; C2 x1, C4 x8, C5 x4 root/endpoint), 4x CAN
+(T5000), 4x UART, 3x SPI, 13x I2C, 5x I2S/2x AHUB, 1x DMIC, 6x PWM, JTAG,
+2x QSPI (boot + secure key), SYS_VIN_HV/MV/SV power inputs.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (DS-11945-001, P4071 carrier, dev kit

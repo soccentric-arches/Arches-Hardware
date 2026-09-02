@@ -55,6 +55,17 @@ USB 3.0 + USB 2.0 · HDMI + DP · PCIe Gen2 · GbE · SATA (data + power;
   control) at 115200 8N1; debug connector J10 exposes UART0 @ 1.8 V.
 - **SSH over USB:** USB 2.0 Micro-AB device mode → `192.168.55.1`.
 
+## Module connector — 400-pin board-to-board
+
+Same 400-pin (8×50), 1.27 mm B2B connector family as TX1 (P2597 carrier);
+full pinout in the Jetson TX2 OEM Product Design Guide. UPHY lane map is
+ODMDATA-configurable (6 lanes: PEX0/1/2/RFU, SATA, USB-SS) — verified
+configurations in the L4T adaptation guide, e.g. default = 1x USB 3.0 +
+1x PCIe x4 + SATA. Interface groups: 12x CSI-2 D-PHY 1.2 lanes, USB 3.1 +
+USB 2.0, PCIe Gen2 (1x4+1x1 or 2x1+1x2), GbE MDI, HDMI 2.0 + DP 1.2 +
+DSI, SATA, SDMMC, CAN (2x), DMIC/DSPK, UART/I2C/I2S/SPI/PWM/GPIO banks,
+VDD_IN 5.5–19.6 V, PMIC_BBAT, FORCE_RECOVERY, JTAG.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P3310 datasheet, TX2 OEM

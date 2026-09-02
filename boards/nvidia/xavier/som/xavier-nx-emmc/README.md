@@ -29,6 +29,11 @@ Same as Xavier NX SD — first-boot OEM wizard (stock) or Arches rootfs user;
 serial console 115200 8N1; SSH at `192.168.55.1` (Micro-B is device-only on
 the P3509 carrier).
 
+## Module connector — 260-pin SODIMM
+
+Same 260-pin SO-DIMM as the SD variant; full pin list in the Xavier NX
+Product Design Guide (DG-09693-001). See `../xavier-nx-sd/README.md`.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

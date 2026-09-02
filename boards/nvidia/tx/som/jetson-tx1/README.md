@@ -60,6 +60,23 @@ camera expansion headers (120-pin 2×60, 0.5 mm each — DSI 2×4 / eDP / CSI
   UART0 @ 1.8 V) — 115200 8N1.
 - **SSH over USB:** USB 2.0 Micro-AB port (device mode) → `192.168.55.1`.
 
+## Module connector — 400-pin board-to-board
+
+400-pin (8×50), 1.27 mm pitch B2B connector (carrier-side Samtec
+REF-186137-01 mating); full pinout in the Jetson TX1 OEM Product Design Guide
+(add to `datasheets/`). Interface groups on the connector:
+
+- Camera: 12x MIPI CSI-2 D-PHY 1.1 lanes (up to 6x2 / 3x4 groupings)
+- USB: 1x USB 3.0 + USB 2.0 (OTG on port 0)
+- PCIe: Gen2 — 1x4 + 1x1 (full x4 slot on dev kit)
+- Ethernet: GbE MDI (4 pairs) + link LEDs
+- Display: HDMI/eDP/DP lanes + DSI (2x4) with backlight/touch control
+- Storage: SDMMC (SDR104) + SATA data/power
+- Low-speed: UART (flow-control), I2C (x2 general + CAM I2C), I2S (x3+),
+  SPI, PWM, GPIO banks, DMIC
+- Power/control: VDD_IN (5.5–19.6 V), POWER_EN/SYS_RESET/shutdown handshake,
+  PMIC_BBAT, FORCE_RECOVERY, JTAG
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P2180 module datasheet, TX1

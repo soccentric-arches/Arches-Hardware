@@ -44,6 +44,12 @@ MGBE, CAN controllers, and the SYS_VIN_SV rail. Recovery USB ID `0955:7226`.
 Same as T5000 — first-boot user setup on display, serial console 115200 8N1
 (`VERIFY` connector), SSH over Ethernet/USB.
 
+## Module connector — 699-pin board-to-board
+
+Identical 699-pin B2B connector/mechanical to T5000; differences: 3x MGBE,
+**no CAN controllers**, no SYS_VIN_SV rail, single ISP/NVENC/NVDEC (see
+DS-11945-001 and `../agx-thor-t5000/README.md`).
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

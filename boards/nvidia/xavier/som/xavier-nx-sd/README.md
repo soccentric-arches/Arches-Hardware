@@ -50,6 +50,15 @@ OTG. No on-module WiFi/BT — use carrier M.2 Key E.
 - Serial console: 115200 8N1 on carrier debug UART.
 - SSH: `192.168.55.1` via USB device mode.
 
+## Module connector — 260-pin SODIMM
+
+260-pin SO-DIMM, 69.6 × 45 mm (same footprint as Nano / Orin NX / Orin
+Nano). Full pin list: Jetson Xavier NX Product Design Guide (DG-09693-001)
+— add to `datasheets/`. Verified interface groups: 6x CSI-2 lanes, 3x USB
+3.1 + 3x USB 2.0, PCIe C0 x4 / C1 x1 / C3 x1 / C5 dual-mode x8 (Gen4),
+GbE MDI, HDMI/DP display lanes, SDMMC (SD SKU), UART/I2C/I2S/SPI/PWM/GPIO
+banks, PMIC_BBAT, FORCE_RECOVERY.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P3668 datasheet, P3509 carrier)

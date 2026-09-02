@@ -45,6 +45,11 @@ On-module PMIC; boots from microSD; no WiFi/BT on module (dev kit has none fitte
 First boot runs the setup wizard (create user/password). Serial console 115200 8N1
 via the dev-kit USB port (`VERIFY` connector); SSH over network once configured.
 
+## Module connector — 260-pin SODIMM
+
+Same 260-pin SO-DIMM footprint as Nano; reduced DDR (2 GB) and I/O — see
+`../jetson-nano-sd/README.md` and the Nano 2GB module datasheet.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

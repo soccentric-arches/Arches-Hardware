@@ -40,6 +40,11 @@ Boot from eMMC via BCT → CBoot.
 Same as TX2 — stock default `ubuntu`/`ubuntu` (change it), serial console 115200 8N1
 on the carrier serial header (3.3 V), SSH at `192.168.55.1` via USB device mode.
 
+## Module connector
+
+Same 400-pin B2B + P2597 carrier interface set as TX2 — see
+`../jetson-tx2/README.md` (module connector section).
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

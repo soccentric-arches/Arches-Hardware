@@ -36,6 +36,13 @@ industrial-specific derating/qualification deltas in the P3701-0008 datasheet
 Same as AGX Orin dev kit — OEM setup wizard first boot, serial console 115200 8N1,
 SSH at `192.168.55.1`.
 
+## Module connector — 699-pin board-to-board
+
+Identical connector/mechanical to the commercial AGX Orin modules (699-pin
+B2B); industrial qualification differs — `VERIFY` derating/qualification
+against the P3701-0008 datasheet. See `../agx-orin-32gb/README.md` for the
+interface groups.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

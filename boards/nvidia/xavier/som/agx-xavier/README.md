@@ -62,6 +62,16 @@
 - **SSH:** USB device mode → `ssh <user>@192.168.55.1`; or over Ethernet/WiFi.
 - **Arches images:** user policy from the `xavier` branch rootfs config.
 
+## Module connector — 699-pin board-to-board
+
+699-pin high-density B2B connector; module 100 × 87 mm with integrated
+thermal transfer plate. Full pinout: Jetson AGX Xavier Product Design Guide
+(add to `datasheets/`). Verified interface groups: 16x MIPI CSI-2 lanes
+(≤6 direct cameras / 16 VC) + 8x SLVS-EC, 5x PCIe Gen4 controllers
+(1×8, 1×4, 1×2, 2×1; root + endpoint), 3x USB 3.1 Gen2 + 4x USB 2.0, GbE
+MDI, HDMI 2.0/eDP/DP display lanes, eMMC + QSPI boot, UART/I2C/I2S/SPI/
+CAN/PWM/DMIC/GPIO banks, VDD_IN, PMIC_BBAT, power-sequencing handshakes.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P2888 datasheet, Xavier Product

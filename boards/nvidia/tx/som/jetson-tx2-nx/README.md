@@ -46,6 +46,14 @@ On-module PMIC/sequencer, eMMC boot (BCT → CBoot). No on-module WiFi/BT
 Default `nvidia`/`nvidia` on stock images (change it); serial console 115200 8N1;
 SSH via `192.168.55.1` on USB device mode.
 
+## Module connector — 260-pin SODIMM
+
+260-pin SO-DIMM (69.6 × 45 mm class, same footprint family as Jetson Nano /
+Orin NX / Orin Nano). Full pin list: Jetson TX2 NX Pin and Function Names
+Guide (DA-10697-001) — add to `datasheets/`. `VERIFY` module connector
+mapping against that guide (TX2 NX is **not** pin-compatible with the P2597
+TX2 carrier).
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

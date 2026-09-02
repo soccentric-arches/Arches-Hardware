@@ -39,6 +39,13 @@ Same as `../agx-orin-32gb/README.md` — `jetson-agx-orin-devkit` config, eMMC o
 NVMe rootfs, UEFI boot selection, OEM setup wizard first boot, console 115200 8N1,
 SSH at `192.168.55.1`.
 
+## Module connector — 699-pin board-to-board
+
+Identical connector/mechanical to the 32 GB module (699-pin B2B, 100 × 87 mm,
+integrated TTP); same interface groups — see
+`../agx-orin-32gb/README.md`. Full pinout: Jetson AGX Orin Product Design
+Guide.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`

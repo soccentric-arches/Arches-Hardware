@@ -63,6 +63,17 @@
   or over Ethernet once configured.
 - **Arches images:** user policy comes from the `orin` branch rootfs config.
 
+## Module connector — 699-pin board-to-board
+
+699-pin (11×65) B2B connector; module 100 × 87 mm with integrated thermal
+transfer plate. Full pinout: Jetson AGX Orin Product Design Guide (add to
+`datasheets/`). Verified interface groups: 16x MIPI CSI-2 lanes (DPHY/CPHY,
+6x2 or 4x4), USB 3.2 Gen2 + USB 2.0 ports (USB0 = RCM/device), multiple PCIe
+Gen4 controllers (dev-kit map: M.2 Key M x4, PCIe x16-slot x8, M.2 Key E x1),
+MGBE (up to 10 GbE) + GbE, 2x CAN, HDMI/DP display, eMMC 5.1 + QSPI-NOR,
+UART/I2C/I2S/SPI/PWM/DMIC/GPIO banks, 15–60 W power envelope, PMIC_BBAT,
+FORCE_RECOVERY, JTAG.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/` (P3701 module datasheet, Orin Product

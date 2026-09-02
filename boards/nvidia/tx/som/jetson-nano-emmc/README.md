@@ -41,6 +41,11 @@ Same as Nano SD — stock images default `nvidia`/`nvidia` (change immediately);
 console 115200 8N1 on the carrier debug UART; SSH via `192.168.55.1` in USB device
 mode.
 
+## Module connector — 260-pin SODIMM
+
+Same 260-pin SO-DIMM and interface groups as the SD variant, plus 16 GB
+on-module eMMC 5.1 — see `../jetson-nano-sd/README.md`.
+
 ## Artifacts
 
 `schematics/` · `pcb/` · `bom/` · `datasheets/`
