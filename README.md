@@ -1,5 +1,14 @@
 # Arches-Hardware
 
+## Repository layout
+
+`boards/nvidia/<family>/{som,devkit}/<board>/README.md` is the **single point of source**
+for every NVIDIA Jetson SOM and developer kit supported by Arches — hardware specs,
+I/O/GPIO tables, memory/storage, power/thermal, flashing procedure, and first-boot login.
+Families mirror the Arches Yocto generation branches (`tx`, `xavier`, `orin`, `thor`),
+per `arches-yocto-generation-branching-requirements.md`. See `boards/README.md` for
+conventions and `boards/nvidia/README.md` for the branch/upstream-pin matrix.
+
 ## Project Summary
 
 Arches-Hardware is the hardware-definition repository for the Arches platform.
