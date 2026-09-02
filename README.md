@@ -1,66 +1,45 @@
 # Arches-Hardware
 
-## Repository layout
+Hardware-definition repository for the **Arches** platform. Single point of source
+for all hardware supported by the Arches system:
 
-`boards/nvidia/<family>/{som,devkit}/<board>/README.md` is the **single point of source**
-for every NVIDIA Jetson SOM and developer kit supported by Arches — hardware specs,
-I/O/GPIO tables, memory/storage, power/thermal, flashing procedure, and first-boot login.
-Families mirror the Arches Yocto generation branches (`tx`, `xavier`, `orin`, `thor`),
-per `arches-yocto-generation-branching-requirements.md`. See `boards/README.md` for
-conventions and `boards/nvidia/README.md` for the branch/upstream-pin matrix.
+- **NVIDIA Jetson** — every SOM and developer kit across the four supported
+  generations (`tx`, `xavier`, `orin`, `thor`)
+- **STM32** — the real-time co-processor on the Arches carrier
 
-## Project Summary
+Human-owned (`status: readonly` in the fleet dependency graph): design files are
+committed by the hardware engineer; the fleet automation never writes here.
 
-Arches-Hardware is the hardware-definition repository for the Arches platform.
+## Layout
 
-The current repository snapshot contains project metadata and agent configuration but no tracked board schematics, layout sources, manufacturing files, firmware, hardware description language, source files, or tests.
+```
+boards/nvidia/<family>/{som,devkit}/<board>/README.md
+    One README per NVIDIA board — identity (P/Ns, flash config, MACHINE),
+    hardware specs, I/O/GPIO tables, memory/storage, power/thermal,
+    internal hardware, how to load the OS, how to log in.
+    Artifact subfolders: schematics/ pcb/ bom/ datasheets/
 
-Consequently, this repository currently acts as a placeholder in the nine-repository ecosystem rather than an executable hardware implementation. Electrical interfaces, board revisions, component selections, bring-up procedures, and production artifacts cannot be inferred from the present tree and are intentionally not invented here.
+mcu/stm32/README.md
+    STM32 real-time co-processor: role, Jetson↔STM32 contract, artifacts.
 
-The absence of implementation files is itself important integration information.
+arches-yocto-generation-branching-requirements.md
+    The generation-branching spec that defines the family coverage matrix
+    (§5), upstream pins (§5.1), and the no-invention rule (§9.4).
+```
 
-Arches-HAL and Arches-Client contain software-facing platform assumptions, while Arches-OS and the configuration repository contain image and device-service concerns. This repository does not yet document a machine-readable contract that connects those assumptions to a board revision.
+Families mirror the Arches Yocto build branches — generations are
+BSP-incompatible, so hardware knowledge stays inside its family folder.
 
-Any future hardware contribution should identify the supported compute module, MCU or co-processor, buses, power domains, debug access, connector pinouts, and validation fixtures, then link those artifacts to the software targets they enable.
+## Key references
 
-There are no repository-local build or test commands and no test files in the current snapshot. Manual verification therefore cannot be claimed.
+- `boards/README.md` — folder conventions, what each board README contains
+- `boards/nvidia/README.md` — family → branch → L4T/JetPack → `meta-tegra` pin matrix
+- `.claude/skills/board-reference/SKILL.md` — how agents may consume (never
+  modify) the board design; design wins over board manifests
 
-The feature table uses `Planned`, `Unknown`, and `Partial` deliberately: a missing artifact is not evidence that a capability exists. Add design files and a bring-up or manufacturing validation procedure before treating this repository as implementation-complete.
+## Status
 
-The absence of artifacts limits confidence in every hardware-facing integration claim.
-
-A future board package should include revision identifiers, source ownership, manufacturing outputs, and a reproducible bring-up checklist so the software repositories can target a named design.
-
-No manual verification is implied by this placeholder documentation.
-
-## Features
-
-| # | Name / Description | Implemented? | Test Coverage? | Manual Test |
-|---:|---|---|---|---|
-| 1 | Board design source files | Planned | None found | [ ] Manual verification required |
-| 2 | Schematics and net connectivity | Planned | None found | [ ] Manual verification required |
-| 3 | PCB layout and fabrication outputs | Planned | None found | [ ] Manual verification required |
-| 4 | Bill of materials and component choices | Unknown | None found | [ ] Manual verification required |
-| 5 | Compute, MCU, and peripheral mapping | Unknown | None found | [ ] Manual verification required |
-| 6 | Power, clock, reset, and safety design | Unknown | None found | [ ] Manual verification required |
-| 7 | Connector and pinout definition | Planned | None found | [ ] Manual verification required |
-| 8 | Bring-up and manufacturing test procedure | Planned | None found | [ ] Manual verification required |
-| 9 | Hardware-to-software revision contract | Unknown | None found | [ ] Manual verification required |
-
-## Limitations and Notes
-
-No build, test, or hardware artifacts are present in this snapshot.
-
-This is the README for Arches-Hardware.
-
-## Description
-
-Add project description here.
-
-## Setup
-
-Add setup instructions here.
-
-## Usage
-
-Add usage instructions here.
+Board READMEs are complete for specs/I/O/flash/login; schematic, PCB, and BOM
+artifacts are placeholders until the hardware owner commits design files. Any
+value that could not be verified is flagged `VERIFY` in place — do not resolve
+it by invention.
